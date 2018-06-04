@@ -2,7 +2,7 @@ package arrays;
 
 import java.util.HashSet;
 
-public class TwoNumberInArrayWhoseSumIsX {
+public class TwoNumberInArrayWhoseDiffrenceIsX {
 
 	public static void main(String[] args) {
 
@@ -19,30 +19,30 @@ public class TwoNumberInArrayWhoseSumIsX {
 		System.out.println("Using Set method..." + arrResultUsingSet[0] + "........" + arrResultUsingSet[1]);
 
 		int arrResultBestCase[] = usingBestCase(arrInt, x);
-		System.out.println("Using Best method..." + arrResultBestCase[0] + "........" + arrResultBestCase[1]);
+		 System.out.println("Using Best method..." + arrResultBestCase[0] + "........" + arrResultBestCase[1]);
 
 	}
 
 	private static int[] usingBestCase(final int[] arrInt, final int x) {
 
 		int firstElement = arrInt[0];
-		int lastElement = arrInt[arrInt.length - 1];
-		int sum = 0;
+		int secondElement = arrInt[1];
+		int diff = 0;
 
 		for (int i = 1; i < arrInt.length; i++) {
-			sum = firstElement + lastElement;
+			diff = Math.abs(firstElement - secondElement);
 
-			if (sum == x)
+			if (diff == x)
 				break;
 
-			if (sum <= x) {
+			if (diff <= x) {
 				firstElement = arrInt[i];
 			} else {
-				lastElement = arrInt[arrInt.length - i++];
+				secondElement = arrInt[arrInt.length - i++];
 			}
 		}
 
-		return new int[] { firstElement, lastElement };
+		return new int[] { firstElement, secondElement };
 	}
 
 	private static int[] usingSet(final int[] arrInt, final int x) {
@@ -54,12 +54,12 @@ public class TwoNumberInArrayWhoseSumIsX {
 		for (int i = 0; i < arrInt.length; i++) {
 			set.add(arrInt[i]);
 		}
-		int diff;
+		int sum;
 		for (int i = 0; i < arrInt.length; i++) {
-			diff = Math.abs(arrInt[i] - x);
-			if (set.contains(diff)) {
+			sum = Math.abs(arrInt[i] + x);
+			if (set.contains(sum)) {
 				firstNumber = arrInt[i];
-				secondNumber = diff;
+				secondNumber = sum;
 				break;
 			}
 		}
@@ -68,15 +68,15 @@ public class TwoNumberInArrayWhoseSumIsX {
 
 	private static int[] bruteForceApproach(final int[] arrInt, final int x) {
 
-		int sum = 0;
+		int diff = 0;
 
 		int firstNumber = 0;
 		int secondNumber = 0;
 
 		for (int i = 0; i < arrInt.length; i++) {
 			for (int j = i; j < arrInt.length; j++) {
-				sum = arrInt[i] + arrInt[j];
-				if (sum == x) {
+				diff = Math.abs(arrInt[i] - arrInt[j]);
+				if (diff == x) {
 					firstNumber = arrInt[i];
 					secondNumber = arrInt[j];
 				}
@@ -84,4 +84,5 @@ public class TwoNumberInArrayWhoseSumIsX {
 		}
 		return new int[] { firstNumber, secondNumber };
 	}
+
 }
