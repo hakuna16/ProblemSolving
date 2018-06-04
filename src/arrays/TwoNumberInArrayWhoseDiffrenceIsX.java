@@ -1,5 +1,6 @@
 package arrays;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class TwoNumberInArrayWhoseDiffrenceIsX {
@@ -20,29 +21,41 @@ public class TwoNumberInArrayWhoseDiffrenceIsX {
 
 		int arrResultBestCase[] = usingBestCase(arrInt, x);
 		 System.out.println("Using Best method..." + arrResultBestCase[0] + "........" + arrResultBestCase[1]);
+		 
+		 int arrInt1[] = new int[] { 7, 9, 10, 15, 16, 11, 3,20,4, 25, };
+			int arrResultBestCase1[] = usingBestCase(arrInt1, x);
+			System.out.println("Using Best method..." + arrResultBestCase1[0] + "........" + arrResultBestCase1[1]);
 
 	}
 
 	private static int[] usingBestCase(final int[] arrInt, final int x) {
 
-		int firstElement = arrInt[0];
-		int secondElement = arrInt[1];
+		int firstElement = 0;
+		int lastElement = 0;
 		int diff = 0;
 
-		for (int i = 1; i < arrInt.length; i++) {
-			diff = Math.abs(firstElement - secondElement);
+		Arrays.sort(arrInt);
 
-			if (diff == x)
-				break;
+		for (int i = 0, j = 1; i < arrInt.length;) {
 
-			if (diff <= x) {
+			diff = arrInt[j] - arrInt[i]; 
+			if (diff == x) {
 				firstElement = arrInt[i];
+				lastElement = arrInt[j];
+				break;
+			}
+			if (diff <= x) {
+				j++;
+				firstElement = arrInt[i];
+				lastElement = arrInt[j];
 			} else {
-				secondElement = arrInt[arrInt.length - i++];
+				i++;
+				firstElement = arrInt[i];
+				lastElement = arrInt[j];
 			}
 		}
 
-		return new int[] { firstElement, secondElement };
+		return new int[] { firstElement, lastElement };
 	}
 
 	private static int[] usingSet(final int[] arrInt, final int x) {

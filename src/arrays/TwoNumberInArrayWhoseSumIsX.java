@@ -1,5 +1,6 @@
 package arrays;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class TwoNumberInArrayWhoseSumIsX {
@@ -21,24 +22,36 @@ public class TwoNumberInArrayWhoseSumIsX {
 		int arrResultBestCase[] = usingBestCase(arrInt, x);
 		System.out.println("Using Best method..." + arrResultBestCase[0] + "........" + arrResultBestCase[1]);
 
+		int arrInt1[] = new int[] { 7, 9, 10, 15, 16, 11, 3, 4 };
+		int arrResultBestCase1[] = usingBestCase(arrInt1, x);
+		System.out.println("Using Best method..." + arrResultBestCase1[0] + "........" + arrResultBestCase1[1]);
+
 	}
 
 	private static int[] usingBestCase(final int[] arrInt, final int x) {
 
-		int firstElement = arrInt[0];
-		int lastElement = arrInt[arrInt.length - 1];
+		int firstElement = 0;
+		int lastElement = 0;
 		int sum = 0;
 
-		for (int i = 1; i < arrInt.length; i++) {
-			sum = firstElement + lastElement;
+		Arrays.sort(arrInt);
 
-			if (sum == x)
-				break;
+		for (int i = 0, j = arrInt.length - 1; i < arrInt.length;) {
 
-			if (sum <= x) {
+			sum = arrInt[i] + arrInt[j];
+			if (sum == x) {
 				firstElement = arrInt[i];
+				lastElement = arrInt[j];
+				break;
+			}
+			if (sum >= x) {
+				j--;
+				firstElement = arrInt[i];
+				lastElement = arrInt[j];
 			} else {
-				lastElement = arrInt[arrInt.length - i++];
+				i++;
+				firstElement = arrInt[i];
+				lastElement = arrInt[j];
 			}
 		}
 
@@ -79,6 +92,7 @@ public class TwoNumberInArrayWhoseSumIsX {
 				if (sum == x) {
 					firstNumber = arrInt[i];
 					secondNumber = arrInt[j];
+					break;
 				}
 			}
 		}
