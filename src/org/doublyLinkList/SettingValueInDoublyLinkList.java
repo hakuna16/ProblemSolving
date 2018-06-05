@@ -25,7 +25,11 @@ public class SettingValueInDoublyLinkList {
 		Node nodeF = new Node("Vivek");
 		nodeE.setNext(nodeF);
 		
+		doublyLinkList.setTail(nodeF);
+		
 		doublyLinkList.print();
+		
+		doublyLinkList.printHeadAndTail();
 	}
 
 }

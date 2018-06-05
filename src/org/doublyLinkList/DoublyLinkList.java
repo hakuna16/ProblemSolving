@@ -5,7 +5,16 @@ import org.doublyLinkList.Node;
 public class DoublyLinkList<T> {
 	
 	private Node<T> head;
+	private Node<T> tail;
 	
+	public Node<T> getTail() {
+		return tail;
+	}
+
+	public void setTail(Node<T> tail) {
+		this.tail = tail;
+	}
+
 	public DoublyLinkList() {
 	}
 
@@ -30,5 +39,11 @@ public class DoublyLinkList<T> {
 		}
 		System.out.print(" null");
 	}
-
+	
+	public void printHeadAndTail(){
+		Node<T> nodeHead = head;
+		Node<T> nodeTail = tail;
+		System.out.println();
+		System.out.println(nodeHead.getData() + "........." + nodeTail.getData());
+	}
 }
