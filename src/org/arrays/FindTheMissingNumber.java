@@ -1,4 +1,4 @@
-package arrays;
+package org.arrays;
 
 public class FindTheMissingNumber {
 

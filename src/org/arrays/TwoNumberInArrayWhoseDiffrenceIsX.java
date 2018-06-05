@@ -1,4 +1,4 @@
-package arrays;
+package org.arrays;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -18,7 +18,12 @@ public class TwoNumberInArrayWhoseDiffrenceIsX {
 
 		int arrResultUsingSet[] = usingSet(arrInt, x);
 		System.out.println("Using Set method..." + arrResultUsingSet[0] + "........" + arrResultUsingSet[1]);
+		
+		int arrInt2[] = new int[] { 9, 7, 11, 15, 16, 3,20,4, 25, };
+		int arrResultUsingSet2[] = usingSet(arrInt2, 1);
+		System.out.println("Using Set method..." + arrResultUsingSet2[0] + "........" + arrResultUsingSet2[1]);
 
+		
 		int arrResultBestCase[] = usingBestCase(arrInt, x);
 		 System.out.println("Using Best method..." + arrResultBestCase[0] + "........" + arrResultBestCase[1]);
 		 
@@ -69,7 +74,7 @@ public class TwoNumberInArrayWhoseDiffrenceIsX {
 		}
 		int sum;
 		for (int i = 0; i < arrInt.length; i++) {
-			sum = Math.abs(arrInt[i] + x);
+			sum = arrInt[i] + x;
 			if (set.contains(sum)) {
 				firstNumber = arrInt[i];
 				secondNumber = sum;
