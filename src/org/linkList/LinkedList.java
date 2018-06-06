@@ -3,6 +3,15 @@ package org.linkList;
 public class LinkedList<T> {
 
 	private Node<T> head;
+	private Node<T> tail;
+
+	public Node<T> getTail() {
+		return tail;
+	}
+
+	public void setTail(Node<T> tail) {
+		this.tail = tail;
+	}
 
 	public LinkedList() {
 	}
@@ -19,9 +28,32 @@ public class LinkedList<T> {
 		this.head = head;
 	}
 
-	public void delete(final Node<T> node) {
-		node.setData(node.getNext().getData());
-		node.setNext(node.getNext().getNext());
+	public void insetAtBegining(final Node<T> node) {
+		if (head == null) {
+			head = node;
+			tail = node;
+		}
+		node.setNext(head);
+		head = node;
+	}
+
+	public void insetAtEnd(final Node<T> node) {
+		if (head == null) {
+			head = node;
+			tail = node;
+		}
+		tail.setNext(node);
+		tail = node;
+		node.setNext(null);
+	}
+
+	public void insertAtGivenNode(final Node<T> giveNode, final Node<T> node) {
+		if (head == null) {
+			head = node;
+			tail = node;
+		}
+		node.setNext(giveNode.getNext());
+		giveNode.setNext(node);
 	}
 
 	public void deleteNode(final Node<T> node) {
@@ -42,5 +74,4 @@ public class LinkedList<T> {
 		}
 		System.out.print(" null");
 	}
-
 }
