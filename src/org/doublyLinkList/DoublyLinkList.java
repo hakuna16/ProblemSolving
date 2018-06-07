@@ -43,6 +43,16 @@ public class DoublyLinkList<T> {
 		node.setPrevious(tail);
 		tail = node;
 	}
+	
+	public void insertAtGivenNode(final Node<T> givenNode, final Node<T> node) {
+		if (head == null) {
+			head = node;
+			tail = node;
+			return;
+		}
+		node.setNext(givenNode.getNext());
+		node.setPrevious(givenNode);
+	}
 
 	public void print() {
 		System.out.println();
@@ -51,6 +61,6 @@ public class DoublyLinkList<T> {
 			System.out.print(node.getData() + "<---->");
 			node = node.getNext();
 		}
-		System.out.print(" null");
+		System.out.println(" null");
 	}
 }

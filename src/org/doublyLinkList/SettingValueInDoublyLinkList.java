@@ -6,22 +6,25 @@ public class SettingValueInDoublyLinkList {
 		
 		DoublyLinkList<String> doublyLinkList = new DoublyLinkList<>();
 		
-		Node nodes[] = {new Node("Er."), new Node("Richa"), new Node("Ritesh"),  new Node("Saurabh"), new Node("Neha"), new Node("Vivek")}; 
-
-		for(Node node : nodes) {
-			doublyLinkList.insertLast(node);
-		}
+		Node nodeA = new Node("Er.");
+		Node nodeB = new Node("Richa");
+		Node nodeC = new Node("Ritesh");
+		Node nodeD = new Node("Saurabh");
+		Node nodeE = new Node("Neha");
+		Node nodeF = new Node("Vivek");
+		
+		doublyLinkList.insertLast(nodeA);
+		doublyLinkList.insertLast(nodeB);
+		doublyLinkList.insertLast(nodeC);
+		doublyLinkList.insertLast(nodeD);
+		
+		doublyLinkList.insertAtGivenNode(nodeC, nodeF);
 		
 		doublyLinkList.print();
 		
-		Node nodes1[] = {new Node("Er."), new Node("Richa"), new Node("Ritesh"),  new Node("Saurabh"), new Node("Neha"), new Node("Vivek")};
+		System.out.println(doublyLinkList.getHead().getData());
+		System.out.println(doublyLinkList.getTail().getData());
 		
-		doublyLinkList = new DoublyLinkList<>();
-		for(Node node : nodes1) {
-			doublyLinkList.insertFirst(node);
-		}
-		
-		doublyLinkList.print();
 	}
 
 }

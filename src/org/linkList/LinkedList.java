@@ -32,6 +32,7 @@ public class LinkedList<T> {
 		if (head == null) {
 			head = node;
 			tail = node;
+			return;
 		}
 		node.setNext(head);
 		head = node;
@@ -41,6 +42,7 @@ public class LinkedList<T> {
 		if (head == null) {
 			head = node;
 			tail = node;
+			return;
 		}
 		tail.setNext(node);
 		tail = node;
@@ -51,6 +53,7 @@ public class LinkedList<T> {
 		if (head == null) {
 			head = node;
 			tail = node;
+			return;
 		}
 		node.setNext(giveNode.getNext());
 		giveNode.setNext(node);
