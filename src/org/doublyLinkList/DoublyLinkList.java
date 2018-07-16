@@ -43,7 +43,7 @@ public class DoublyLinkList<T> {
 		node.setPrevious(tail);
 		tail = node;
 	}
-	
+
 	public void insertAtGivenNode(final Node<T> givenNode, final Node<T> node) {
 		if (head == null) {
 			head = node;
@@ -51,7 +51,37 @@ public class DoublyLinkList<T> {
 			return;
 		}
 		node.setNext(givenNode.getNext());
-		node.setPrevious(givenNode);
+		givenNode.setNext(node);
+		node.setPrevious(node);
+	}
+
+	public void deleteFromBegining() {
+		if(head == tail){
+			System.out.println("Single Element in LinkList : Deleting...");
+			head=tail=null;
+			return;
+		}
+		head = head.getNext();
+		
+	}
+
+	public void deleteFromEnd() {
+		if(head == tail){
+			System.out.println("Single Element in LinkList : Deleting...");
+			head=tail=null;
+			return;
+		}
+		tail = tail.getPrevious();
+		tail.setNext(null);
+	}
+
+	public void deleteFromGivenNode(final Node<T> givenNode) {
+		if(head == tail){
+			System.out.println("Single Element in LinkList : Deleting...");
+			head=tail=null;
+			return;
+		}
+		givenNode.getPrevious().setNext(givenNode.getNext().getNext());
 	}
 
 	public void print() {
